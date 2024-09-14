@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="billForm">
+        <label for="billAmount">Enter the bill amount</label>
+        <input type="number" name="billAmount" id="billAmount" required>
+        <br><br>
+        <label for="tipPercentage">Enter tip percentage</label>
+        <input type="number" name="tipPercentage" id="tipPercentage"><span>%</span>
+        <br><br>
+        <button type="submit">calculate tip amount</button>
+    </form>
+
+    <div id="res"></div>
+
+    <script>
+        function tipAmount(billAmount,tipPercentage){
+            return billAmount * (tipPercentage/100)
+        }
+
+        document.getElementById('billForm').addEventListener('submit',function(e){
+            e.preventDefault()
+
+            const billAmount = document.getElementById('billAmount').value
+            const tipPercentage = document.getElementById("tipPercentage").value
+            const res = document.getElementById('res').value
+            const ta = tipAmount(billAmount,tipPercentage)
+
+            if(billAmount >0 && tipPercentage >0){
+                document.write(`${ta}`)
+            }
+        })
+    </script>
+</body>
+</html>
